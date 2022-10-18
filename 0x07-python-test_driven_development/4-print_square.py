@@ -1,91 +1,21 @@
-How to Use 4-print_square.py
-============================
+#!/usr/bin/python3
+"""A function that  prints a square with the character #"""
 
-This module defines a square-printing function ``print_square(size)``.
 
-Usage
-=====
-
-Squares are printed using the ``#`` character. The parameter ``size``
-represents the height and width of the square.
-
-::
-
-    >>> print_square = __import__('4-print_square').print_square
-    >>> print_square(1)
-    #
-
-::
-
-    >>> print_square(4)
-    ####
-    ####
-    ####
-    ####
-
-::
-
-    >>> print_square(10)
-    ##########
-    ##########
-    ##########
-    ##########
-    ##########
-    ##########
-    ##########
-    ##########
-    ##########
-    ##########
-
-If ``size`` is zero, the function prints nothing.
-
-::
-
-    >>> print_square(0)
-
-Invalid Sizes
-=============
-
-The parameter ``size`` must be an integer. Otherwise, a TypeError is raised.
-
-::
-
-    >>> print_square("a string")
-    Traceback (most recent call last):
-    TypeError: size must be an integer
-
-::
-
-    >>> print_square(3.5)
-    Traceback (most recent call last):
-    TypeError: size must be an integer
-
-::
-
-    >>> print_square(None)
-    Traceback (most recent call last):
-    TypeError: size must be an integer
-
-If ``size`` is less than zero, a ValueError is raised.
-
-::
-
-    >>> print_square(-8)
-    Traceback (most recent call last):
-    ValueError: size must be >= 0
-
-Note that type-checking occurs before value-checking.
-
-::
-
-    >>> print_square(-6.5)
-    Traceback (most recent call last):
-    TypeError: size must be an integer
-
-At least one argument must be provided.
-
-::
-
-    >>> print_square()
-    Traceback (most recent call last):
-    TypeError: print_square() missing 1 required positional argument: 'size'
+def print_square(size):
+    """prints the square of length size, with character #.
+    size must be greater than 0
+    Raises:
+        TypeError: if size is not an integer
+        ValueError: if size is less than 0
+        TypeError: if size is a float and is less than 0
+    """
+    if type(size) is not int:
+        raise TypeError("size must be an integer")
+    elif type(size) is float and size < 0:
+        raise TypeError("size must be an integer")
+    elif size < 0:
+        raise ValueError("size must be >= 0")
+    else:
+        for x in range(size):
+            print('#'*size)
